@@ -1,14 +1,16 @@
 package back_end.repositorio.impl;
 
 import back_end.dominio.Agencia;
+import back_end.recuperacao.Recuperavel;
 import back_end.repositorio.AgenciaRepositorio;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static DB.Path.DB_path;
 
-public class AgenciaRepositorioEmMemoriaImpl implements AgenciaRepositorio {
+public class AgenciaRepositorioEmMemoriaImpl implements AgenciaRepositorio, Recuperavel {
 
     private Map<Integer, Agencia> agencias;
 
@@ -21,18 +23,6 @@ public class AgenciaRepositorioEmMemoriaImpl implements AgenciaRepositorio {
         boolean existeAgenciaComMesmoNumeroNoBd = agencias.containsKey(novaAgencia.getNumeroAgencia());
         if(existeAgenciaComMesmoNumeroNoBd) throw new IllegalStateException("Ja Existe uma agencia com mesmo numero agencia no BD");
         agencias.put(novaAgencia.getNumeroAgencia(), novaAgencia);
-        try{
-            FileOutputStream arq = new FileOutputStream(DB_path);
-            ObjectOutputStream os = new ObjectOutputStream(arq);
-            for(int i =0 ; i < agencias.size(); i++){
-                os.writeObject(agencias.get(i));
-            }
-            os.close();
-            arq.close();
-            System.out.println("Foi escrito lek!");
-        }catch(IOException erro){
-            System.out.println("Deu erro -> "+ erro);
-        }
         return novaAgencia;
     }
 
@@ -52,21 +42,72 @@ public class AgenciaRepositorioEmMemoriaImpl implements AgenciaRepositorio {
         return agencias.values().stream().anyMatch(a -> a.possuiNumeroAgencia(numeroAgencia));
     }
 
-    public ArrayList<Agencia> ler(){
-        ArrayList<Agencia> agencias = new ArrayList<>();
-        try{
-            FileInputStream arq = new FileInputStream(DB_path);
-            ObjectInputStream is = new ObjectInputStream(arq);
-            for(int i = 0; i < 4; i++){
-                Agencia age = (Agencia) is.readObject();
-                agencias.add(age);
-            }
-            is.close();arq.close();
-        }catch (IOException erro){
-            System.out.println("DEu errro ->" + erro);
-        } catch (ClassNotFoundException e) {
-            System.out.println("Deu erro no ob" + e);
+    @Override
+    public List<Agencia> listar() {
+        return new ArrayList<>(agencias.values());
+    }
+
+    @Override
+    public void realizaBackup() {
+        try
+        {
+
+            String pathToAgenciaDb = System.getProperty("user.dir") + System.getProperty("file.separator") + "src" +
+                    System.getProperty("file.separator") + "main" +
+                    System.getProperty("file.separator") + "java" +
+                    System.getProperty("file.separator") + "DB" +
+                    System.getProperty("file.separator") + "agencias.db";
+
+            //Saving of object in a file
+            FileOutputStream file = new FileOutputStream(pathToAgenciaDb);
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            // Method for serialization of object
+            out.writeObject(agencias);
+
+            out.close();
+            file.close();
+
+            System.out.println("O Backup do repositorio Agencia foi realizado com sucesso!");
+
         }
-        return agencias;
+        catch(IOException ex)
+        {
+            System.out.println("Falha ao realizar o Backup do repositorio Agencia!");
+        }
+    }
+
+    @Override
+    public void recuperaBackup() {
+        // Deserialization
+        try
+        {
+
+            String pathToAgenciaDb = System.getProperty("user.dir") + System.getProperty("file.separator") + "src" +
+                    System.getProperty("file.separator") + "main" +
+                    System.getProperty("file.separator") + "java" +
+                    System.getProperty("file.separator") + "DB" +
+                    System.getProperty("file.separator") + "agencias.db";
+
+            // Reading the object from a file
+            FileInputStream file = new FileInputStream(pathToAgenciaDb);
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            // Method for deserialization of object
+            this.agencias = (Map<Integer, Agencia>) in.readObject();
+
+            in.close();
+            file.close();
+
+            System.out.println("O repositorio Agencia foi recuperado com sucesso!");
+        }
+        catch(IOException ex)
+        {
+            System.out.println("IOException is caught : " + ex.getMessage());
+        }
+        catch(ClassNotFoundException ex)
+        {
+            System.out.println("ClassNotFoundException is caught");
+        }
     }
 }

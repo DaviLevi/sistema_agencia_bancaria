@@ -2,6 +2,7 @@ package back_end.repositorio;
 
 import back_end.dominio.Agencia;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface AgenciaRepositorio {
@@ -9,4 +10,5 @@ public interface AgenciaRepositorio {
     Agencia atualiza(Agencia agenciaSalva);
     Optional<Agencia> consultaAgenciaPeloNumeroAgencia(Integer numeroAgencia);
     boolean existeUmaAgenciaComNumeroAgencia(Integer numeroAgencia);
+    List<Agencia> listar();
 }

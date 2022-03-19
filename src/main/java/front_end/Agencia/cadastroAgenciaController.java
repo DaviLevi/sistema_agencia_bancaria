@@ -1,4 +1,5 @@
 package front_end.Agencia;
+import back_end.contexto.ContextoAplicacao;
 import back_end.dominio.Agencia;
 
 import back_end.repositorio.AgenciaRepositorio;
@@ -19,8 +20,7 @@ import java.io.IOException;
 
 public class cadastroAgenciaController {
 
-    AgenciaRepositorio repositorio;
-    AgenciaRepositorioEmMemoriaImpl cad = new AgenciaRepositorioEmMemoriaImpl();
+
 
     int id = 0;
     @FXML
@@ -33,9 +33,8 @@ public class cadastroAgenciaController {
     @FXML
     protected void Submit(){
         teste.setText("Cadastro realizado");
-        Agencia agencia = new Agencia(id,city_field.getText(),end_field.getText());
-        id++;
-        cad.salva(agencia);
+        Agencia agencia = new Agencia(Integer.valueOf(nome_field.getText()),city_field.getText(),end_field.getText());
+        ((AgenciaRepositorio)ContextoAplicacao.getModulo("agenciaRepositorio")).salva(agencia);
     }
 
     @FXML

@@ -1,6 +1,8 @@
 package front_end.Agencia;
 
+import back_end.contexto.ContextoAplicacao;
 import back_end.dominio.Agencia;
+import back_end.repositorio.AgenciaRepositorio;
 import back_end.repositorio.impl.AgenciaRepositorioEmMemoriaImpl;
 import front_end.Menu.Menu;
 import javafx.application.Application;
@@ -21,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -43,13 +46,11 @@ public class ListAgencia extends Application implements Initializable {
         lstEsta.setCellValueFactory(
                 new PropertyValueFactory<>("estado"));
         tabela.setItems(listaAgencia());
-
     }
+
     private ObservableList<Agencia> listaAgencia() {
-        AgenciaRepositorioEmMemoriaImpl cad = new AgenciaRepositorioEmMemoriaImpl();
-        ArrayList<Agencia> agencias = cad.ler();
-        return FXCollections.observableArrayList(
-                agencias);
+        List<Agencia> agencias = ((AgenciaRepositorio) ContextoAplicacao.getModulo("agenciaRepositorio")).listar();
+        return FXCollections.observableArrayList(agencias);
     }
 
     @Override
@@ -60,6 +61,7 @@ public class ListAgencia extends Application implements Initializable {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Menu.class.getResource("MenuView.fxml"));
