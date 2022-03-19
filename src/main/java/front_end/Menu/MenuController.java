@@ -11,6 +11,9 @@ import front_end.Contas.CadastrarConta;
 import front_end.Contas.ListConta;
 import front_end.Funcionario.CadastrarFuncionario;
 import front_end.Funcionario.ListFuncionario;
+import front_end.Operacoes.Cupons;
+import front_end.Operacoes.ListOp;
+import front_end.Operacoes.RealizarOp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,7 +90,38 @@ public class MenuController {
         stage.setScene(scene);
         stage.show();
     }
-
+    @FXML
+    public void urlListagemCupons(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Cupons.class.getResource("listcupom.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void urlrealizarEmprestimo(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(RealizarOp.class.getResource("realizarEmprestimo.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void urlrealizarOperacao(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(RealizarOp.class.getResource("realizarOp.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void urlListagemOperacoes(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(ListOp.class.getResource("listOp.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 }

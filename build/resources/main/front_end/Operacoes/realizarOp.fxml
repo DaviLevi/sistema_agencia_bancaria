@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Operacoes.RealizarOpController">
+    <children>
+        <Label layoutX="113.0" layoutY="14.0" prefHeight="17.0" prefWidth="172.0" text="Operaçao" />
+        <Button layoutX="54.0" layoutY="41.0" mnemonicParsing="false" onAction="#returnMenu" text="Button" />
+    </children>
+</AnchorPane>

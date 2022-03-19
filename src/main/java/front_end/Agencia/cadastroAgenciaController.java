@@ -25,15 +25,15 @@ public class cadastroAgenciaController {
     int id = 0;
     @FXML
     private Label teste;
-    public TextField nome_field;
+    public TextField number_field;
     public TextField city_field;
-    public TextField end_field;
+    public TextField est_field;
 
 
     @FXML
     protected void Submit(){
         teste.setText("Cadastro realizado");
-        Agencia agencia = new Agencia(Integer.valueOf(nome_field.getText()),city_field.getText(),end_field.getText());
+        Agencia agencia = new Agencia(Integer.valueOf(number_field.getText()),city_field.getText(),est_field.getText());
         ((AgenciaRepositorio)ContextoAplicacao.getModulo("agenciaRepositorio")).salva(agencia);
     }
 
