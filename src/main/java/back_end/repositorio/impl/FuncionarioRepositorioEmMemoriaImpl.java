@@ -1,15 +1,18 @@
 package back_end.repositorio.impl;
 
 import back_end.dominio.Agencia;
+import back_end.dominio.Cliente;
 import back_end.dominio.Funcionario;
+import back_end.recuperacao.Recuperavel;
 import back_end.repositorio.AgenciaRepositorio;
 import back_end.repositorio.FuncionarioRepositorio;
 
+import java.io.*;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Optional;
 
-public class FuncionarioRepositorioEmMemoriaImpl implements FuncionarioRepositorio {
+public class FuncionarioRepositorioEmMemoriaImpl implements FuncionarioRepositorio, Recuperavel {
     private Map<Integer, Funcionario> funcionarios;
     private AgenciaRepositorio agenciaRepositorio;
 
@@ -35,5 +38,56 @@ public class FuncionarioRepositorioEmMemoriaImpl implements FuncionarioRepositor
     @Override
     public Optional<Funcionario> buscaFuncionarioPorNumeroFuncional(Integer numeroFuncional) {
         return funcionarios.keySet().stream().filter(nf -> nf.equals(numeroFuncional)).findFirst().map(nf -> funcionarios.get(nf));
+    }
+
+    @Override
+    public void realizaBackup() {
+        try
+        {
+            String pathToAgenciaDb = System.getProperty("user.dir") + System.getProperty("file.separator") + "src" +
+                    System.getProperty("file.separator") + "main" +
+                    System.getProperty("file.separator") + "java" +
+                    System.getProperty("file.separator") + "DB" +
+                    System.getProperty("file.separator") + "funcionarios.db";
+            //Saving of object in a file
+            FileOutputStream file = new FileOutputStream(pathToAgenciaDb);
+            ObjectOutputStream out = new ObjectOutputStream(file);
+            // Method for serialization of object
+            out.writeObject(this.funcionarios);
+            out.close();
+            file.close();
+            System.out.println("O Backup do repositorio Funcionario foi realizado com sucesso!");
+        }
+        catch(IOException ex)
+        {
+            System.out.println("Falha ao realizar o Backup do repositorio Funcionario!");
+        }
+    }
+
+    @Override
+    public void recuperaBackup() {
+        // Deserialization
+        try
+        {
+            String pathToAgenciaDb = System.getProperty("user.dir") + System.getProperty("file.separator") + "src" +
+                    System.getProperty("file.separator") + "main" +
+                    System.getProperty("file.separator") + "java" +
+                    System.getProperty("file.separator") + "DB" +
+                    System.getProperty("file.separator") + "funcionarios.db";
+
+            // Reading the object from a file
+            FileInputStream file = new FileInputStream(pathToAgenciaDb);
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            // Method for deserialization of object
+            this.funcionarios = (Map<Integer, Funcionario>) in.readObject();
+            in.close();
+            file.close();
+            System.out.println("O repositorio Funcionario foi recuperado com sucesso!");
+        }
+        catch(Exception ex)
+        {
+            System.out.println("Falha ao recuperar o repositorio Funcionario : " + ex.getMessage());
+        }
     }
 }
