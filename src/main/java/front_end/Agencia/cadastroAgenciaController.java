@@ -1,6 +1,8 @@
 package front_end.Agencia;
 import back_end.dominio.Agencia;
 
+import back_end.repositorio.AgenciaRepositorio;
+import back_end.repositorio.impl.AgenciaRepositorioEmMemoriaImpl;
 import front_end.Menu.Menu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,13 +11,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+import back_end.modulos.CadastroAgencia;
 import java.io.IOException;
 
 public class cadastroAgenciaController {
 
+    AgenciaRepositorio repositorio;
+    AgenciaRepositorioEmMemoriaImpl cad = new AgenciaRepositorioEmMemoriaImpl();
+
+    int id = 0;
     @FXML
     private Label teste;
     public TextField nome_field;
@@ -26,19 +33,23 @@ public class cadastroAgenciaController {
     @FXML
     protected void Submit(){
         teste.setText("Cadastro realizado");
-        Agencia agencia = new Agencia(0,city_field.getText(),end_field.getText());
-        System.out.println(agencia.getNumeroAgencia());
-        System.out.println(agencia.encontraseNaCidade(city_field.getText()));
+        Agencia agencia = new Agencia(id,city_field.getText(),end_field.getText());
+        id++;
+        cad.salva(agencia);
     }
 
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
+
         Parent root = FXMLLoader.load(Menu.class.getResource("MenuView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
+
+
 
 
 }

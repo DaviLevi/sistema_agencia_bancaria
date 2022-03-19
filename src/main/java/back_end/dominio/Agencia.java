@@ -1,10 +1,11 @@
 package back_end.dominio;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Agencia {
+public class Agencia implements Serializable {
     private Integer numeroAgencia;
     private String cidade;
     private String estado;
@@ -37,6 +38,12 @@ public class Agencia {
 
     public Integer getNumeroAgencia(){
         return this.numeroAgencia;
+    }
+    public String getCidade(){
+        return this.cidade;
+    }
+    public String getEstado(){
+        return this.estado;
     }
 
     public Agencia atualizaCidade(String novaCidade){

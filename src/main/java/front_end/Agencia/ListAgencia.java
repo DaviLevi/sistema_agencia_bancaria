@@ -1,21 +1,55 @@
 package front_end.Agencia;
 
+import back_end.dominio.Agencia;
+import back_end.repositorio.impl.AgenciaRepositorioEmMemoriaImpl;
 import front_end.Menu.Menu;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.Set;
 
-public class ListAgencia extends Application {
+public class ListAgencia extends Application implements Initializable {
 
-    public static void main(String[] args) {
-        launch(args);
+    @FXML
+    public TableView<Agencia> tabela;
+    public TableColumn<Agencia,String> lstEsta;
+    public TableColumn<Agencia,String> lstCity;
+    public TableColumn<Agencia,Integer> lstNumber;
+
+    public static void main(String[] args) {launch(args);}
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        lstNumber.setCellValueFactory(
+                new PropertyValueFactory<>("numeroAgencia"));
+        lstCity.setCellValueFactory(
+                new PropertyValueFactory<>("cidade"));
+        lstEsta.setCellValueFactory(
+                new PropertyValueFactory<>("estado"));
+        tabela.setItems(listaAgencia());
+
+    }
+    private ObservableList<Agencia> listaAgencia() {
+        AgenciaRepositorioEmMemoriaImpl cad = new AgenciaRepositorioEmMemoriaImpl();
+        ArrayList<Agencia> agencias = cad.ler();
+        return FXCollections.observableArrayList(
+                agencias);
     }
 
     @Override

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Agencia.cadastroAgenciaController">
+   <children>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="571.0" text="Cadastro de Agencia">
+         <font>
+            <Font name="Times New Roman" size="28.0" />
+         </font>
+      </Label>
+      <TextFlow layoutX="14.0" layoutY="72.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="69.0" text="Numero:" />
+            <TextField id="nome_field" fx:id="nome_field" />
+         </children>
+      </TextFlow>
+      <TextFlow layoutX="14.0" layoutY="109.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="69.0" text="Cidade:" />
+            <TextField fx:id="city_field" />
+         </children>
+      </TextFlow>
+      <TextFlow layoutX="14.0" layoutY="149.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="69.0" text="Estado" />
+            <TextField fx:id="end_field" />
+         </children>
+      </TextFlow>
+      <Label layoutX="14.0" layoutY="192.0" prefHeight="17.0" prefWidth="69.0" text="Conta:" />
+      <Button layoutX="14.0" layoutY="255.0" mnemonicParsing="false" onAction="#Submit" text="Enviar" />
+      <Label fx:id="teste" layoutX="78.0" layoutY="259.0" />
+      <ChoiceBox layoutX="83.0" layoutY="188.0" prefWidth="150.0" />
+      <Button layoutX="83.0" layoutY="255.0" mnemonicParsing="false" onAction="#returnMenu" text="Voltar" />
+   </children>
+</AnchorPane>

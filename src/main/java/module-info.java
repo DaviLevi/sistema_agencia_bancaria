@@ -21,5 +21,7 @@ module com.example.agencia_bancaria {
     opens front_end.Operacoes to javafx.fxml;
     exports front_end.Menu;
     opens front_end.Menu to javafx.fxml;
+    opens back_end.dominio;
+
 
 }
