@@ -6,9 +6,6 @@ import back_end.repositorio.AgenciaRepositorio;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
-
-import static DB.Path.DB_path;
 
 public class AgenciaRepositorioEmMemoriaImpl implements AgenciaRepositorio, Recuperavel {
 
