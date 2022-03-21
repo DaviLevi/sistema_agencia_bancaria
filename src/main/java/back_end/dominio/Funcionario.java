@@ -17,12 +17,12 @@ public class Funcionario {
         this.numeroFuncional = numeroFuncional;
     }
 
-    public Funcionario(Integer numeroFuncional, String nome, String telefone, Set<Dependente> dependentes,
+    public Funcionario(Integer numeroFuncional, String nome, String telefone,
                        Funcionario supervisor, LocalDate dataAdmissao, Agencia agencia) {
         this.numeroFuncional = numeroFuncional;
         this.nome = nome;
         this.telefone = telefone;
-        this.dependentes = dependentes;
+        //this.dependentes = dependentes;
         this.supervisor = supervisor;
         this.dataAdmissao = dataAdmissao;
         this.agencia = agencia;

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FCFDFF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Menu.MenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FCFDFF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Menu.MenuController">
    <children>
       <Label alignment="CENTER" prefHeight="51.0" prefWidth="600.0" style="-fx-background-color: #4399A9;" text="Agencia Bancaria" textFill="#fcfdff">
          <font>
@@ -21,7 +22,7 @@
             <Button fx:id="btn_cad_agencia2" accessibleRole="MENU_BUTTON" layoutX="9.0" layoutY="72.0" mnemonicParsing="false" onAction="#urlListagemAgencia" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Visualizar" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="225.0" layoutY="84.0" prefHeight="110.0" prefWidth="150.0" style="-fx-border-color: #73C9D6; -fx-background-color: #6393A2;">
+      <AnchorPane layoutX="321.0" layoutY="222.0" prefHeight="143.0" prefWidth="150.0" style="-fx-border-color: #73C9D6; -fx-background-color: #6393A2;">
          <children>
             <Label alignment="CENTER" layoutX="-2.0" layoutY="4.0" prefHeight="25.0" prefWidth="150.0" text="Funcionários" textFill="#fcfdff">
                <font>
@@ -29,7 +30,8 @@
                </font>
             </Label>
             <Button fx:id="btn_cad_agencia2" accessibleRole="MENU_BUTTON" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#urlCadastroFuncionario" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Novo Funcionario" textFill="WHITE" />
-            <Button fx:id="btn_cad_agencia22" accessibleRole="MENU_BUTTON" layoutX="9.0" layoutY="72.0" mnemonicParsing="false" onAction="#urlListagemFuncionario" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Visualizar" textFill="WHITE" />
+            <Button fx:id="btn_cad_agencia22" accessibleRole="MENU_BUTTON" layoutX="9.0" layoutY="71.0" mnemonicParsing="false" onAction="#urlListagemFuncionario" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Visualizar" textFill="WHITE" />
+            <Button fx:id="btn_cad_agencia211" accessibleRole="MENU_BUTTON" layoutX="10.0" layoutY="106.0" mnemonicParsing="false" onAction="#urlCadastroAgencia" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Dependentes" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="410.0" layoutY="84.0" prefHeight="110.0" prefWidth="150.0" style="-fx-border-color: #73C9D6; -fx-background-color: #6393A2;">
@@ -55,7 +57,7 @@
             <Button fx:id="btn_cad_agencia2111" accessibleRole="MENU_BUTTON" layoutX="9.0" layoutY="105.0" mnemonicParsing="false" onAction="#urlListagemCupons" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Cupons Gerados" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="335.0" layoutY="222.0" prefHeight="143.0" prefWidth="150.0" style="-fx-border-color: #73C9D6; -fx-background-color: #6393A2;">
+      <AnchorPane layoutX="225.0" layoutY="84.0" prefHeight="110.0" prefWidth="150.0" style="-fx-border-color: #73C9D6; -fx-background-color: #6393A2;">
          <children>
             <Label alignment="CENTER" layoutX="-2.0" layoutY="4.0" prefHeight="25.0" prefWidth="150.0" text="Clientes" textFill="#fcfdff">
                <font>
@@ -64,7 +66,6 @@
             </Label>
             <Button fx:id="btn_cad_agencia2" accessibleRole="MENU_BUTTON" layoutX="9.0" layoutY="35.0" mnemonicParsing="false" onAction="#urlCadastroCliente" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Cadastrar Cliente" textFill="WHITE" />
             <Button fx:id="btn_cad_agencia21" accessibleRole="MENU_BUTTON" layoutX="9.0" layoutY="70.0" mnemonicParsing="false" onAction="#urlListagemCliente" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Visualizar" textFill="WHITE" />
-            <Button fx:id="btn_cad_agencia211" accessibleRole="MENU_BUTTON" layoutX="9.0" layoutY="105.0" mnemonicParsing="false" onAction="#urlCadastroAgencia" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Dependentes" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

@@ -1,5 +1,11 @@
 package front_end.Cliente;
 
+import back_end.contexto.ContextoAplicacao;
+import back_end.dominio.Agencia;
+import back_end.dominio.Cliente;
+import back_end.dominio.Funcionario;
+import back_end.repositorio.AgenciaRepositorio;
+import back_end.repositorio.ClienteRepositorio;
 import front_end.Menu.Menu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,11 +13,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.List;
 
 public class cadastroClienteController {
     @FXML
@@ -19,14 +29,29 @@ public class cadastroClienteController {
     public TextField nome_field;
     public TextField city_field;
     public TextField end_field;
+    public TextField estado_field;
+    public TextField document_field;
+    public DatePicker date_field;
+    public ChoiceBox gerente_field;
 
 
     @FXML
     protected void onSend(){
+        LocalDate data = date_field.getValue();
+        LocalDate date = LocalDate.now();
+        List<Agencia> agencias = ((AgenciaRepositorio) ContextoAplicacao.getModulo("agenciaRepositorio")).listar();
+        Funcionario funcionario = new Funcionario(10,"Funcionario Teste","8747332",null,date,agencias.get(0));
+        Cliente cliente = new Cliente(
+                nome_field.getText(),
+                document_field.getText(),
+                data,
+                end_field.getText(),
+                city_field.getText(),
+                estado_field.getText(),
+                funcionario
+        );
+        ((ClienteRepositorio) ContextoAplicacao.getModulo("clienteRepositorio")).salva(cliente);
         teste.setText("Cadastro realizado");
-        System.out.println(nome_field.getText());
-        System.out.println(city_field.getText());
-        System.out.println(end_field.getText());
     }
 
     @FXML
