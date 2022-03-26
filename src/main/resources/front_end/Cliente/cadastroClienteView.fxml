@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Cliente.cadastroClienteController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fcfdff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Cliente.cadastroClienteController">
     <children>
-        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="571.0" text="Cadastro de Cliente">
+        <Label alignment="CENTER" layoutX="-1.0" prefHeight="42.0" prefWidth="607.0" style="-fx-background-color: #4399A9;" text="Cadastro de Cliente" textFill="#fcfdff">
             <font>
-                <Font name="Times New Roman" size="28.0" />
+                <Font name="Arial Black" size="27.0" />
             </font>
         </Label>
       <AnchorPane layoutX="25.0" layoutY="55.0">
@@ -42,7 +42,7 @@
             <AnchorPane layoutX="168.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="149.0" text="Gerente:" />
-                  <ChoiceBox fx:id="gerente_field" layoutY="17.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="gerente_field" layoutY="17.0" prefWidth="150.0" style="-fx-background-color: #4399A9;" />
                </children>
             </AnchorPane>
          </children>
@@ -71,9 +71,9 @@
       </AnchorPane>
       <AnchorPane layoutX="25.0" layoutY="253.0">
          <children>
-              <Button mnemonicParsing="false" onAction="#onSend" text="Enviar" />
+              <Button mnemonicParsing="false" onAction="#onSend" style="-fx-background-color: #4399A9;" text="Enviar" textFill="#fcfdff" />
             <Button layoutX="61.0" mnemonicParsing="false" onAction="#returnMenu" text="Voltar" />
-              <Label fx:id="teste" layoutX="125.0" layoutY="4.0" prefHeight="17.0" prefWidth="410.0" />
+              <Label fx:id="teste" layoutX="125.0" layoutY="4.0" prefHeight="17.0" prefWidth="410.0" textFill="#00d351" />
          </children>
       </AnchorPane>
     </children>

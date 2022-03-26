@@ -16,6 +16,10 @@ public class ContaCorrente extends Conta{
         this.tarifaMensal = tarifaMensal;
     }
 
+    public Double getTarifaMensal() {
+        return tarifaMensal;
+    }
+
     @Override
     public String toString() {
         return "ContaCorrente{" +

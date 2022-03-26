@@ -22,7 +22,7 @@
             <Button fx:id="btn_cad_agencia2" accessibleRole="MENU_BUTTON" layoutX="9.0" layoutY="72.0" mnemonicParsing="false" onAction="#urlListagemAgencia" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Visualizar" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="321.0" layoutY="222.0" prefHeight="143.0" prefWidth="150.0" style="-fx-border-color: #73C9D6; -fx-background-color: #6393A2;">
+      <AnchorPane layoutX="321.0" layoutY="222.0" prefHeight="110.0" prefWidth="150.0" style="-fx-border-color: #73C9D6; -fx-background-color: #6393A2;">
          <children>
             <Label alignment="CENTER" layoutX="-2.0" layoutY="4.0" prefHeight="25.0" prefWidth="150.0" text="Funcionários" textFill="#fcfdff">
                <font>
@@ -31,7 +31,6 @@
             </Label>
             <Button fx:id="btn_cad_agencia2" accessibleRole="MENU_BUTTON" layoutX="10.0" layoutY="35.0" mnemonicParsing="false" onAction="#urlCadastroFuncionario" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Novo Funcionario" textFill="WHITE" />
             <Button fx:id="btn_cad_agencia22" accessibleRole="MENU_BUTTON" layoutX="9.0" layoutY="71.0" mnemonicParsing="false" onAction="#urlListagemFuncionario" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Visualizar" textFill="WHITE" />
-            <Button fx:id="btn_cad_agencia211" accessibleRole="MENU_BUTTON" layoutX="10.0" layoutY="106.0" mnemonicParsing="false" onAction="#urlCadastroAgencia" prefHeight="25.0" prefWidth="130.0" style="-fx-background-color: #6393A2; -fx-border-color: #FCFDFF; -fx-border-radius: 5px;" text="Dependentes" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="410.0" layoutY="84.0" prefHeight="110.0" prefWidth="150.0" style="-fx-border-color: #73C9D6; -fx-background-color: #6393A2;">

@@ -8,7 +8,9 @@ import back_end.repositorio.ClienteRepositorio;
 import back_end.repositorio.FuncionarioRepositorio;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -28,13 +30,18 @@ public class ClienteRepositorioEmMemoriaImpl implements ClienteRepositorio, Recu
     public Cliente salva(Cliente cliente) {
         Long idDisponivel = geradorId.get();
         cliente.atualizaId(idDisponivel);
-        Funcionario gerenteConsultado = funcionarioRepositorio.buscaFuncionarioPorNumeroFuncional(cliente.getNumeroFuncionalGerente())
-                                                              .orElseThrow(() -> new IllegalStateException("Gerente vinculado ao cliente nao existe"));
+        //Funcionario gerenteConsultado = funcionarioRepositorio.buscaFuncionarioPorNumeroFuncional(cliente.getNumeroFuncionalGerente())
+        //                                                      .orElseThrow(() -> new IllegalStateException("Gerente vinculado ao cliente nao existe"));
 
-        cliente.atribuiGerente(gerenteConsultado);
+        //cliente.atribuiGerente(gerenteConsultado);
+        cliente.atribuiGerente(cliente.getGerente());
         clientes.put(idDisponivel, cliente);
         geradorId.incrementAndGet();
         return cliente;
+    }
+    @Override
+    public List<Cliente> listar() {
+        return new ArrayList<>(clientes.values());
     }
 
     @Override

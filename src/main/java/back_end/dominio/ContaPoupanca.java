@@ -15,4 +15,8 @@ public class ContaPoupanca extends Conta{
         super(proprietarios, numeroIdentificacao, agencia, dataCriacao, saldo, dataUltimoAcesso);
         this.taxaJuros = taxaJuros;
     }
+
+    public Double getTaxaJuros() {
+        return taxaJuros;
+    }
 }

@@ -2,10 +2,50 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Operacoes.RealizarOpController">
     <children>
-        <Label layoutX="113.0" layoutY="14.0" prefHeight="17.0" prefWidth="172.0" text="Operaçao" />
-        <Button layoutX="54.0" layoutY="41.0" mnemonicParsing="false" onAction="#returnMenu" text="Button" />
+        <Label alignment="CENTER" layoutY="-1.0" prefHeight="50.0" prefWidth="600.0" text="Realizar Operação">
+         <font>
+            <Font name="Arial Black" size="27.0" />
+         </font></Label>
+      <AnchorPane layoutX="25.0" layoutY="344.0">
+         <children>
+              <Button layoutX="75.0" mnemonicParsing="false" onAction="#returnMenu" text="Voltar" />
+            <Button fx:id="enviar_btn" mnemonicParsing="false" onAction="#submit" text="Realizar" />
+            <Label fx:id="successMSg" layoutX="138.0" layoutY="4.0" prefHeight="17.0" prefWidth="362.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="25.0" layoutY="68.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="82.0" text="Conta" />
+            <ChoiceBox fx:id="Contas_select" layoutY="17.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="213.0" layoutY="68.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="82.0" text="Tipo" />
+            <ChoiceBox fx:id="type_select" layoutY="17.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="25.0" layoutY="122.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="82.0" text="Descrição:" />
+            <TextArea fx:id="descri_field" layoutY="17.0" prefHeight="138.0" prefWidth="526.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="25.0" layoutY="286.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="82.0" text="Valor:" />
+            <TextField fx:id="valor_field" layoutX="1.0" layoutY="17.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="401.0" layoutY="68.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="82.0" text="Codigo:" />
+            <TextField fx:id="cod_field" layoutX="1.0" layoutY="17.0" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

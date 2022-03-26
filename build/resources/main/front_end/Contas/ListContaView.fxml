@@ -19,8 +19,11 @@
           <TableColumn fx:id="col_Agencia" prefWidth="75.0" text="Agencia" />
           <TableColumn fx:id="col_prop" prefWidth="174.0" text="Proprietários" />
             <TableColumn fx:id="col_saldo" prefWidth="84.0" text="Saldo" />
-            <TableColumn fx:id="col_taxa" prefWidth="78.0" text="Taxa" />
-            <TableColumn fx:id="col_date" prefWidth="165.0" text="Data Ultimo Acesso" />
+            <TableColumn fx:id="col_taxa" prefWidth="78.0" text="Taxa">
+               <columns>
+                  <TableColumn fx:id="juro_col" prefWidth="64.0" text="Taxa" />
+               </columns></TableColumn>
+            <TableColumn fx:id="col_date" prefWidth="179.0" text="Data Ultimo Acesso" />
         </columns>
       </TableView>
    </children>

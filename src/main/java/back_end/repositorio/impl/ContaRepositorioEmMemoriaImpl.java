@@ -7,23 +7,27 @@ import back_end.recuperacao.Recuperavel;
 import back_end.repositorio.ContaRepositorio;
 
 import java.io.*;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class ContaRepositorioEmMemoriaImpl implements ContaRepositorio, Recuperavel {
 
     private Map<Long, Conta> contas;
+    private AtomicLong geradorId;
 
     public ContaRepositorioEmMemoriaImpl(){
         this.contas = new Hashtable<>();
+        this.geradorId = new AtomicLong(1);
     }
 
     @Override
     public void salva(Conta conta) {
-        boolean existeContaComMesmoIdNoBd = contas.containsKey(conta.getId());
-        if(existeContaComMesmoIdNoBd) throw new IllegalStateException("Ja Existe uma conta com o mesmo id no BD");
+        Long idDisponivel = geradorId.get();
+        conta.atualizaid(idDisponivel);
+        //boolean existeContaComMesmoIdNoBd = contas.containsKey(conta.getId());
+        //if(existeContaComMesmoIdNoBd) throw new IllegalStateException("Ja Existe uma conta com o mesmo id no BD");
         contas.put(conta.getId(), conta);
+        geradorId.incrementAndGet();
     }
 
     @Override
@@ -38,6 +42,10 @@ public class ContaRepositorioEmMemoriaImpl implements ContaRepositorio, Recupera
         boolean naoExisteContaComMesmoIdNoBd = !contas.containsKey(conta.getId());
         if(naoExisteContaComMesmoIdNoBd) throw new IllegalStateException("Nao existe uma conta com o id " + conta.getId() + " no BD");
         contas.remove(conta.getId());
+    }
+    @Override
+    public List<Conta> listar() {
+        return new ArrayList<>(contas.values());
     }
 
     @Override

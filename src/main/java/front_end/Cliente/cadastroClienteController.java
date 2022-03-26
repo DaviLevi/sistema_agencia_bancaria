@@ -34,7 +34,12 @@ public class cadastroClienteController {
     public DatePicker date_field;
     public ChoiceBox gerente_field;
 
-
+    @FXML
+    public void initialize() {
+        gerente_field.getItems().add("Eduardo");
+        gerente_field.getItems().add("Gustavo");
+        gerente_field.getItems().add("Fabricia");
+    }
     @FXML
     protected void onSend(){
         LocalDate data = date_field.getValue();

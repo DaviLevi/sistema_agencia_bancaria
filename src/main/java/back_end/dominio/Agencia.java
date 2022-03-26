@@ -39,9 +39,11 @@ public class Agencia implements Serializable {
     public Integer getNumeroAgencia(){
         return this.numeroAgencia;
     }
+
     public String getCidade(){
         return this.cidade;
     }
+
     public String getEstado(){
         return this.estado;
     }

@@ -32,7 +32,7 @@
       <AnchorPane layoutX="14.0" layoutY="188.0">
          <children>
             <Label layoutY="4.0" prefHeight="17.0" prefWidth="69.0" text="Conta:" />
-            <ChoiceBox layoutX="69.0" prefWidth="150.0" style="-fx-background-color: #4399A9;" />
+            <ChoiceBox fx:id="contas_select" layoutX="69.0" prefWidth="150.0" style="-fx-background-color: #4399A9;" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="255.0">

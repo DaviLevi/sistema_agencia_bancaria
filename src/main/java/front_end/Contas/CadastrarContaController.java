@@ -1,9 +1,10 @@
 package front_end.Contas;
 
-import back_end.dominio.Cliente;
-import back_end.dominio.Conta;
-import back_end.dominio.ContaCorrente;
-import back_end.dominio.ContaPoupanca;
+import back_end.contexto.ContextoAplicacao;
+import back_end.dominio.*;
+import back_end.repositorio.AgenciaRepositorio;
+import back_end.repositorio.ClienteRepositorio;
+import back_end.repositorio.ContaRepositorio;
 import front_end.Menu.Menu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public class CadastrarContaController {
@@ -29,6 +33,8 @@ public class CadastrarContaController {
     public TextField cod_field;
     public TextField saldo_field;
     public ChoiceBox type_select;
+    public ChoiceBox agencias_;
+    public ChoiceBox clientes_;
     public TextField taxam_field;
     public TextField taxaj_field;
     public TextFlow taxa_mensal;
@@ -41,6 +47,15 @@ public class CadastrarContaController {
         type_select.setOnAction((event) -> {
             contaSelect();
         });
+        List<Agencia> agencias = ((AgenciaRepositorio) ContextoAplicacao.getModulo("agenciaRepositorio")).listar();
+        for (int i = 0; i < agencias.size(); i++){
+            agencias_.getItems().add(agencias.get(i));
+        }
+        List<Cliente> clientes = ((ClienteRepositorio) ContextoAplicacao.getModulo("clienteRepositorio")).listar();
+        for (int i = 0; i < clientes.size(); i++){
+            clientes_.getItems().add(clientes.get(i));
+        }
+
     }
 
     @FXML void contaSelect(){
@@ -55,30 +70,34 @@ public class CadastrarContaController {
 
     @FXML
     protected void Submit() {
-        successMSg.setText("Cadastro Realizado com Sucesso");
-        /*Set<Integer>
+        Set<Cliente> clientes = new HashSet<>();
+        clientes.add((Cliente) clientes_.getValue());
+        Random ran = new Random();
+        Long n = Long.valueOf(ran.nextLong(10));
+        Conta conta;
         if(type_select.getValue().equals("Conta Corrente")){
-            ContaCorrente conta = new ContaCorrente(
+            conta = new ContaCorrente(
                     clientes,
-                    0,
-                    agencia_field.getText(),
+                    n,
+                    (Agencia) agencias_.getValue(),
                     LocalDate.now(),
                     Double.valueOf(saldo_field.getText()),
                     LocalDate.now(),
                     Double.valueOf(taxam_field.getText())
             );
         }else{
-            ContaPoupanca conta = new ContaPoupanca(
+            conta = new ContaPoupanca(
                     clientes,
-                    0,
-                    agencia_field.getText(),
+                    n,
+                    (Agencia) agencias_.getValue(),
                     LocalDate.now(),
                     Double.valueOf(saldo_field.getText()),
                     LocalDate.now(),
                     Double.valueOf(taxaj_field.getText())
             );
-        }*/
-
+        }
+        ((ContaRepositorio) ContextoAplicacao.getModulo("contaRepositorio")).salva(conta);
+        successMSg.setText("Cadastro Realizado com Sucesso");
 
     }
 

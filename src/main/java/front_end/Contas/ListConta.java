@@ -3,9 +3,15 @@ package front_end.Contas;
 import back_end.contexto.ContextoAplicacao;
 import back_end.dominio.Agencia;
 import back_end.dominio.Conta;
+import back_end.dominio.ContaCorrente;
+import back_end.dominio.ContaPoupanca;
 import back_end.repositorio.AgenciaRepositorio;
+import back_end.repositorio.ClienteRepositorio;
+import back_end.repositorio.ContaRepositorio;
 import front_end.Menu.Menu;
 import javafx.application.Application;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,6 +39,7 @@ public class ListConta extends Application implements Initializable {
     public TableColumn<Conta, Integer> col_prop;
     public TableColumn<Conta, Double> col_saldo;
     public TableColumn<Conta, Double> col_taxa;
+    public TableColumn<Conta, Double> juro_col;
     public TableColumn<Conta, LocalDate> col_date;
 
     @Override
@@ -45,14 +52,16 @@ public class ListConta extends Application implements Initializable {
                 new PropertyValueFactory<>("saldo"));
         col_taxa.setCellValueFactory(
                 new PropertyValueFactory<>("tarifaMensal"));
+        juro_col.setCellValueFactory(
+                new PropertyValueFactory<>("taxaJuros"));
         col_date.setCellValueFactory(
                 new PropertyValueFactory<>("dataUltimoAcesso"));
-        //tabela.setItems(listaContas());
+        tabela.setItems(listaContas());
     }
-    /*private ObservableList<Conta> listaContas() {
-        // contas =
+    private ObservableList<Conta> listaContas() {
+        List<Conta> contas = ((ContaRepositorio) ContextoAplicacao.getModulo("contaRepositorio")).listar();
         return FXCollections.observableArrayList(contas);
-    }*/
+    }
 
     public static void main(String[] args) {
         launch(args);

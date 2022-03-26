@@ -1,11 +1,12 @@
 package back_end.dominio;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Cliente {
+public class Cliente implements Serializable {
     private Long id;
     private String nome;
     private String cpf;
@@ -49,7 +50,7 @@ public class Cliente {
 
     public void atribuiConta(Conta conta){
         boolean jaFoiAtribuida = this.contas.add(conta);
-        if(jaFoiAtribuida) throw new IllegalStateException("Essa conta já foi atribuida a esse cliente");
+        //if(jaFoiAtribuida) throw new IllegalStateException("Essa conta já foi atribuida a esse cliente");
     }
 
     public void atribuiGerente(Funcionario gerente){
@@ -62,5 +63,21 @@ public class Cliente {
 
     public Integer getNumeroFuncionalGerente(){
         return this.gerente.getNumeroFuncional();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getEstado() {
+        return estado;
     }
 }

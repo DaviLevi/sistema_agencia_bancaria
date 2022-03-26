@@ -50,13 +50,13 @@ public class ListCliente extends Application implements Initializable {
                 new PropertyValueFactory<>("cidade"));
         col_estado.setCellValueFactory(
                 new PropertyValueFactory<>("estado"));
-        //tabela.setItems(listaCliente);
+        tabela.setItems(listaCliente());
     }
 
-    /*private ObservableList<Cliente> listaCliente() {
+    private ObservableList<Cliente> listaCliente() {
         List<Cliente> clientes = ((ClienteRepositorio) ContextoAplicacao.getModulo("clienteRepositorio")).listar();
         return FXCollections.observableArrayList(clientes);
-    }*/
+    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {

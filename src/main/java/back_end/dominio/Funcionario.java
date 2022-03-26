@@ -1,10 +1,11 @@
 package back_end.dominio;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Set;
 
-public class Funcionario {
+public class Funcionario implements Serializable {
     private Integer numeroFuncional; // natural
     private String nome;
     private String telefone;
@@ -52,5 +53,13 @@ public class Funcionario {
 
     public Integer getNumeroFuncionalDoSupervisor() {
         return this.supervisor.numeroFuncional;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public LocalDate getDataAdmissao() {
+        return dataAdmissao;
     }
 }

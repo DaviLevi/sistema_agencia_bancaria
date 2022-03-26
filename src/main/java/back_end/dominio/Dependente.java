@@ -1,6 +1,8 @@
 package back_end.dominio;
 
-public class Dependente {
+import java.io.Serializable;
+
+public class Dependente implements Serializable {
     private String nome;
 
     public Dependente(String nome) {
