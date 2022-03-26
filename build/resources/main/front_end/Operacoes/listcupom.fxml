@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Operacoes.Cupons">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fcfdff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Operacoes.Cupons">
     <children>
-        <Label alignment="CENTER" prefHeight="52.0" prefWidth="601.0" text="Cupons gerados">
+        <Label alignment="CENTER" prefHeight="44.0" prefWidth="601.0" style="-fx-background-color: #4399A9;" text="Cupons gerados" textFill="#fcfdff">
          <font>
             <Font name="Arial Black" size="27.0" />
          </font></Label>

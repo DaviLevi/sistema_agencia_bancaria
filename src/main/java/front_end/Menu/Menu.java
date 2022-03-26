@@ -51,6 +51,7 @@ public class Menu extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),600, 400);
         primaryStage.setTitle("Sistema Agencia Bancaria");

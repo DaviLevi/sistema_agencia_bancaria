@@ -34,16 +34,27 @@ public class RealizarOpController {
 
     @FXML
     public void initialize() {
+
         type_select.getItems().add("CREDITO");
         type_select.getItems().add("DEBITO");
         List<Conta> contas = ((ContaRepositorio) ContextoAplicacao.getModulo("contaRepositorio")).listar();
         for (int i = 0; i < contas.size(); i++){
             Contas_select.getItems().add(contas.get(i));
         }
+
+    }
+
+    private void fieldsNull(){
+
+        descri_field.setText("");
+        valor_field.setText("");
+        cod_field.setText("");
+
     }
 
     @FXML
     public void submit(){
+
         OperacaoBancaria op = new OperacaoBancaria(
                 Long.valueOf(cod_field.getText()),
                 (Conta) Contas_select.getValue(),
@@ -52,6 +63,7 @@ public class RealizarOpController {
                 Double.valueOf(valor_field.getText())
         );
         ((Conta) Contas_select.getValue()).setDataUltimoAcesso(LocalDate.now());
+        // Gerar cupom caso operação seja superior a 5000
         if(Double.valueOf(valor_field.getText()) > 5000){
             Random ran = new Random();
             Long id = ran.nextLong(500);
@@ -59,6 +71,7 @@ public class RealizarOpController {
             Cupom cupom = new Cupom(id,data);
         }
         successMSg.setText("Operação realizada com Sucesso");
+        this.fieldsNull();
     }
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {

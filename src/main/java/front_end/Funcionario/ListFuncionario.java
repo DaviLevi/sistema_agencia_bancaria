@@ -38,6 +38,7 @@ public class ListFuncionario extends Application implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         id_col.setCellValueFactory(
                 new PropertyValueFactory<>("numeroFuncional")
         );
@@ -51,32 +52,35 @@ public class ListFuncionario extends Application implements Initializable {
                 new PropertyValueFactory<>("dataAdmissao")
         );
         tabela.setItems(listaFuncionario());
+
     }
 
     private ObservableList<Funcionario> listaFuncionario() {
+
         List<Funcionario> contas = ((FuncionarioRepositorio) ContextoAplicacao.getModulo("funcionarioRepositorio")).listar();
         return FXCollections.observableArrayList(contas);
+
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+    public static void main(String[] args) {launch(args);}
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ListFuncionarioView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(),600, 240);
             primaryStage.setTitle("Listagem");
             primaryStage.setScene(scene);
             primaryStage.show();
-        }
-        @FXML
-        public void returnMenu(ActionEvent event) throws IOException {
+    }
+
+    @FXML
+    public void returnMenu(ActionEvent event) throws IOException {
             Parent root = FXMLLoader.load(Menu.class.getResource("MenuView.fxml"));
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         }
-    }
+}
 

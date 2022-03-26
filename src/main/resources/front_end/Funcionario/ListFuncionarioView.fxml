@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Funcionario.ListFuncionario">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fcfdff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front_end.Funcionario.ListFuncionario">
    <children>
-      <Label alignment="CENTER" layoutY="-1.0" prefHeight="55.0" prefWidth="601.0" text="Listagem de Funcionario">
+      <Label alignment="CENTER" layoutY="-1.0" prefHeight="48.0" prefWidth="601.0" style="-fx-background-color: #4399A9;" text="Listagem de Funcionario" textFill="#fcfdff">
          <font>
             <Font name="Arial Black" size="27.0" />
          </font></Label>

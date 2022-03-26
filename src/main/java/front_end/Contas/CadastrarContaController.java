@@ -29,8 +29,6 @@ public class CadastrarContaController {
 
     @FXML
     private Label successMSg;
-    public TextField agencia_field;
-    public TextField cod_field;
     public TextField saldo_field;
     public ChoiceBox type_select;
     public ChoiceBox agencias_;
@@ -42,6 +40,7 @@ public class CadastrarContaController {
 
     @FXML
     public void initialize() {
+
         type_select.getItems().add("Conta Corrente");
         type_select.getItems().add("Conta Poupança");
         type_select.setOnAction((event) -> {
@@ -59,6 +58,7 @@ public class CadastrarContaController {
     }
 
     @FXML void contaSelect(){
+
         if(type_select.getValue().equals("Conta Corrente")){
             taxa_mensal.setVisible(true);
             taxa_juros.setVisible(false);
@@ -68,12 +68,22 @@ public class CadastrarContaController {
         }
     }
 
+    private void fieldsNull(){
+
+        saldo_field.setText("");
+        taxam_field.setText("");
+        taxaj_field.setText("");
+
+    }
     @FXML
     protected void Submit() {
+
         Set<Cliente> clientes = new HashSet<>();
         clientes.add((Cliente) clientes_.getValue());
+
         Random ran = new Random();
-        Long n = Long.valueOf(ran.nextLong(10));
+        Long n = Long.valueOf(ran.nextLong(100));
+
         Conta conta;
         if(type_select.getValue().equals("Conta Corrente")){
             conta = new ContaCorrente(
@@ -98,16 +108,18 @@ public class CadastrarContaController {
         }
         ((ContaRepositorio) ContextoAplicacao.getModulo("contaRepositorio")).salva(conta);
         successMSg.setText("Cadastro Realizado com Sucesso");
-
+        this.fieldsNull();
     }
 
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
+
         Parent root = FXMLLoader.load(Menu.class.getResource("MenuView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 
 

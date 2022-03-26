@@ -24,6 +24,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class cadastroClienteController {
+
     @FXML
     private Label teste;
     public TextField nome_field;
@@ -36,16 +37,31 @@ public class cadastroClienteController {
 
     @FXML
     public void initialize() {
+
         gerente_field.getItems().add("Eduardo");
         gerente_field.getItems().add("Gustavo");
         gerente_field.getItems().add("Fabricia");
+
     }
+
+    private void fieldsNull(){
+
+        nome_field.setText("");
+        city_field.setText("");
+        end_field.setText("");
+        estado_field.setText("");
+        document_field.setText("");
+
+    }
+
     @FXML
     protected void onSend(){
+
         LocalDate data = date_field.getValue();
         LocalDate date = LocalDate.now();
         List<Agencia> agencias = ((AgenciaRepositorio) ContextoAplicacao.getModulo("agenciaRepositorio")).listar();
         Funcionario funcionario = new Funcionario(10,"Funcionario Teste","8747332",null,date,agencias.get(0));
+
         Cliente cliente = new Cliente(
                 nome_field.getText(),
                 document_field.getText(),
@@ -57,15 +73,19 @@ public class cadastroClienteController {
         );
         ((ClienteRepositorio) ContextoAplicacao.getModulo("clienteRepositorio")).salva(cliente);
         teste.setText("Cadastro realizado");
+        this.fieldsNull();
+
     }
 
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
+
         Parent root = FXMLLoader.load(Menu.class.getResource("MenuView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 
 }

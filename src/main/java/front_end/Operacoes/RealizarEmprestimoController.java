@@ -38,6 +38,7 @@ public class RealizarEmprestimoController{
 
     @FXML
     public void initialize() {
+
         List<Agencia> agencias = ((AgenciaRepositorio) ContextoAplicacao.getModulo("agenciaRepositorio")).listar();
         for (int i = 0; i < agencias.size(); i++){
             agencia_select.getItems().add(agencias.get(i));
@@ -46,10 +47,20 @@ public class RealizarEmprestimoController{
         for (int i = 0; i < clientes.size(); i++){
             clientes_select.getItems().add(clientes.get(i));
         }
+
+    }
+
+    private void fieldsNull(){
+
+        cod_field.setText("");
+        valor_field.setText("");
+        parcelas_field.setText("");
+
     }
 
     @FXML
     public void submit(){
+
         Set<Cliente> clientes = new HashSet<>();
         clientes.add((Cliente) clientes_select.getValue());
         Emprestimo emprestimo = new Emprestimo(
@@ -59,6 +70,7 @@ public class RealizarEmprestimoController{
                 Double.valueOf(valor_field.getText()),
                 Integer.valueOf(parcelas_field.getText())
         );
+        // Gerar cupom caso a operação seja de valor superior a 5000
         if(Double.valueOf(valor_field.getText()) > 5000){
             Random ran = new Random();
             Long id = ran.nextLong(500);
@@ -66,13 +78,16 @@ public class RealizarEmprestimoController{
             Cupom cupom = new Cupom(id,data);
         }
         successMSg.setText("Emprestimo Realizado com Sucesso!");
+        this.fieldsNull();
     }
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
+
         Parent root = FXMLLoader.load(Menu.class.getResource("MenuView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 }

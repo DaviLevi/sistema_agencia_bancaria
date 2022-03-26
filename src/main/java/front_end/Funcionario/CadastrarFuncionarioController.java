@@ -35,20 +35,36 @@ public class CadastrarFuncionarioController {
 
     @FXML
     public void initialize() {
+
         List<Agencia> agencias = ((AgenciaRepositorio) ContextoAplicacao.getModulo("agenciaRepositorio")).listar();
         for (int i = 0; i < agencias.size(); i++){
             agencia_select.getItems().add(agencias.get(i));
         }
         supervisor_select.getItems().add("Bruno");
+
     }
 
     @FXML
     void adicionaDependente(){
+
         dependente_select.getItems().add(dependente_field.getText());
         dependente_field.setText("");
+
     }
+
+    private void fieldsNull(){
+
+        nome_field.setText("");
+        document_field.setText("");
+        telefone_field.setText("");
+        id_field.setText("");
+        dependente_field.setText("");
+
+    }
+
     @FXML
     protected void submit(){
+
         Funcionario supervisor = new Funcionario(1);
         Funcionario funcionario = new Funcionario(
                 Integer.valueOf(id_field.getText()),
@@ -58,16 +74,20 @@ public class CadastrarFuncionarioController {
                 date_field.getValue(),
                 (Agencia) agencia_select.getValue()
         );
+
         ((FuncionarioRepositorio)ContextoAplicacao.getModulo("funcionarioRepositorio")).salva(funcionario);
         successMSg.setText("Cadastro realizado");
+        this.fieldsNull();
     }
 
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
+
         Parent root = FXMLLoader.load(Menu.class.getResource("MenuView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 }

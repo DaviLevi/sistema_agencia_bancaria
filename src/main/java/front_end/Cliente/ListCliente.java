@@ -35,13 +35,13 @@ public class ListCliente extends Application implements Initializable {
     public TableColumn<Cliente,String> col_cidade;
     public TableColumn<Cliente,String> col_estado;
 
-
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         col_nome.setCellValueFactory(
                 new PropertyValueFactory<>("nome"));
         col_cpf.setCellValueFactory(
@@ -51,28 +51,35 @@ public class ListCliente extends Application implements Initializable {
         col_estado.setCellValueFactory(
                 new PropertyValueFactory<>("estado"));
         tabela.setItems(listaCliente());
+
     }
 
     private ObservableList<Cliente> listaCliente() {
+
         List<Cliente> clientes = ((ClienteRepositorio) ContextoAplicacao.getModulo("clienteRepositorio")).listar();
         return FXCollections.observableArrayList(clientes);
+
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ListClienteView.fxml"));
             Scene scene = new Scene(fxmlLoader.load(),600, 240);
             primaryStage.setTitle("Listagem");
             primaryStage.setScene(scene);
             primaryStage.show();
+
         }
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
+
         Parent root = FXMLLoader.load(Menu.class.getResource("MenuView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
-    }
+}
 

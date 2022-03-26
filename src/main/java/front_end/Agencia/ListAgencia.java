@@ -19,13 +19,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Set;
+
 
 public class ListAgencia extends Application implements Initializable {
 
@@ -49,26 +47,32 @@ public class ListAgencia extends Application implements Initializable {
     }
 
     private ObservableList<Agencia> listaAgencia() {
+
         List<Agencia> agencias = ((AgenciaRepositorio) ContextoAplicacao.getModulo("agenciaRepositorio")).listar();
         return FXCollections.observableArrayList(agencias);
+
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ListAgenciaView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),600, 240);
         primaryStage.setTitle("Listagem");
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
     @FXML
     public void returnMenu(ActionEvent event) throws IOException {
+
         Parent root = FXMLLoader.load(Menu.class.getResource("MenuView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 
 }

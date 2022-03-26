@@ -24,9 +24,6 @@ import java.util.List;
 
 public class cadastroAgenciaController {
 
-
-
-    int id = 0;
     @FXML
     private Label teste;
     public TextField number_field;
@@ -41,11 +38,23 @@ public class cadastroAgenciaController {
             contas_select.getItems().add(contas.get(i));
         }
     }
+
+    private void fieldsNull(){
+
+        number_field.setText("");
+        city_field.setText("");
+        est_field.setText("");
+
+    }
+
     @FXML
     protected void Submit(){
-        teste.setText("Cadastro realizado");
+
         Agencia agencia = new Agencia(Integer.valueOf(number_field.getText()),city_field.getText(),est_field.getText());
         ((AgenciaRepositorio)ContextoAplicacao.getModulo("agenciaRepositorio")).salva(agencia);
+        teste.setText("Cadastro realizado");
+        this.fieldsNull();
+
     }
 
     @FXML
