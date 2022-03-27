@@ -38,8 +38,8 @@ public class ListConta extends Application implements Initializable {
     public TableColumn<Conta, Integer> col_Agencia;
     public TableColumn<Conta, Integer> col_prop;
     public TableColumn<Conta, Double> col_saldo;
-    public TableColumn<Conta, Double> col_taxa;
-    public TableColumn<Conta, Double> juro_col;
+    public TableColumn<ContaCorrente, Double> col_taxa;
+    public TableColumn<ContaPoupanca, Double> juro_col;
     public TableColumn<Conta, LocalDate> col_date;
 
     @Override

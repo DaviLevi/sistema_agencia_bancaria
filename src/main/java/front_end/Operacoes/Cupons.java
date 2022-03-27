@@ -39,13 +39,12 @@ public class Cupons extends Application implements Initializable{
                 new PropertyValueFactory<>("id"));
         validade_col.setCellValueFactory(
                 new PropertyValueFactory<>("validade"));
-        //tabela.setItems(ListaCupons());
+        tabela.setItems(ListaCupons());
 
     }
     private ObservableList<Cupom> ListaCupons() {
 
-        //List<Cupom> cupons = ((CupomRepositorio) ContextoAplicacao.getModulo("cupomRepositorio")).listar();
-        return FXCollections.observableArrayList();
+        return FXCollections.observableArrayList(Menu.cupons);
 
     }
 

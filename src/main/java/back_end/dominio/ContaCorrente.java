@@ -16,6 +16,10 @@ public class ContaCorrente extends Conta{
         this.tarifaMensal = tarifaMensal;
     }
 
+    public Double getTaxaJuros() {
+        return Double.valueOf(0);
+    }
+
     public Double getTarifaMensal() {
         return tarifaMensal;
     }

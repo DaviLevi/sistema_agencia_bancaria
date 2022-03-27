@@ -1,6 +1,7 @@
 package front_end.Menu;
 
 import back_end.contexto.ContextoAplicacao;
+import back_end.dominio.Cupom;
 import back_end.recuperacao.Recuperaveis;
 import back_end.recuperacao.Recuperavel;
 import back_end.repositorio.AgenciaRepositorio;
@@ -17,10 +18,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu extends Application {
 
+    public static List<Cupom> cupons = new ArrayList<>();
     private static Recuperaveis recuperaveis;
 
     public static void main(String[] args) {
@@ -29,7 +32,6 @@ public class Menu extends Application {
         ContaRepositorio contasDb = new ContaRepositorioEmMemoriaImpl();
         FuncionarioRepositorio funcionariosDb = new FuncionarioRepositorioEmMemoriaImpl(agenciaDb);
         ClienteRepositorio clientesDb = new ClienteRepositorioEmMemoriaImpl(funcionariosDb);
-
         recuperaveis = new Recuperaveis(
                 List.of(
                         (Recuperavel) agenciaDb,

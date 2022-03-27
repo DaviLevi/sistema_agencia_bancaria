@@ -31,6 +31,7 @@ public class RealizarEmprestimoController{
     @FXML
     public TextField cod_field;
     public Label successMSg;
+    public Label cuponMSG;
     public TextField valor_field;
     public TextField parcelas_field;
     public ChoiceBox clientes_select;
@@ -76,6 +77,8 @@ public class RealizarEmprestimoController{
             Long id = ran.nextLong(500);
             LocalDate data = LocalDate.now().plusMonths(1);
             Cupom cupom = new Cupom(id,data);
+            Menu.cupons.add(cupom);
+            cuponMSG.setText("!!! Um cupom foi gerado !!!");
         }
         successMSg.setText("Emprestimo Realizado com Sucesso!");
         this.fieldsNull();

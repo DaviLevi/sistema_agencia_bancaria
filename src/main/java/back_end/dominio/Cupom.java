@@ -13,4 +13,12 @@ public class Cupom  implements Serializable {
         this.id = id;
         this.validade = validade;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public LocalDate getValidade() {
+        return validade;
+    }
 }

@@ -19,4 +19,7 @@ public class ContaPoupanca extends Conta{
     public Double getTaxaJuros() {
         return taxaJuros;
     }
+    public Double getTarifaMensal() {
+        return Double.valueOf(0);
+    }
 }

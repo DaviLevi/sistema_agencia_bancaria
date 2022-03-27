@@ -31,6 +31,7 @@ public class RealizarOpController {
     public TextField valor_field;
     public TextField cod_field;
     public Label successMSg;
+    public Label cuponMSG;
 
     @FXML
     public void initialize() {
@@ -69,6 +70,9 @@ public class RealizarOpController {
             Long id = ran.nextLong(500);
             LocalDate data = LocalDate.now().plusMonths(1);
             Cupom cupom = new Cupom(id,data);
+            Menu.cupons.add(cupom);
+            cuponMSG.setText("!! Um novo cupom foi gerado !!");
+
         }
         successMSg.setText("Operação realizada com Sucesso");
         this.fieldsNull();
